@@ -19,10 +19,14 @@ class Solution:
         return all(m >= s for m, s in zip(minuend, subtrahend))
 
     def maxScoreWords(self, words: list[str], letters: list[str], score: list[int]) -> int:
+        # L
         letter_count = self.calc_letters(letters)
+        # WL
         words_alpha_count = self.calc_words_alpha(words)
+        # WA
         words_score = [sum([words_alpha_count[word_idx][i] * score[i] for i in range(26)]) for word_idx in range(len(words))]
 
+        # 2^W
         def calc_score(word_idx, current_score):
             if word_idx == len(words):
                 return current_score
@@ -30,8 +34,10 @@ class Solution:
             without = calc_score(word_idx + 1, current_score)
 
             if self.subtractable(letter_count, words_alpha_count[word_idx]):
+                # A
                 self.minus_score(letter_count, words_alpha_count[word_idx])
                 with_word = calc_score(word_idx + 1, current_score + words_score[word_idx])
+                # A
                 self.plus_score(letter_count, words_alpha_count[word_idx])
                 return max(with_word, without)
             else:
