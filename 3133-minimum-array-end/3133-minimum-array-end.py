@@ -21,7 +21,6 @@ class Solution:
             if bin_x[-i-1] == "0":
                 if bin_under[-j-1] == "1":
                     under_value += pow(2, i)                
-                    print("+ ", pow(2, i))
                 under_bit -= 1
                 j += 1
 
