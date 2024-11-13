@@ -6,7 +6,6 @@ class Solution:
         for i in range(len(nums)):
             lower_huddle = self.bin_big(nums, i, lower - nums[i])
             upper_huddle = self.bin_small(nums, i, upper - nums[i])
-            print(i, lower_huddle, upper_huddle)
             if lower_huddle <= upper_huddle:
                 result += upper_huddle - lower_huddle + 1
                 
