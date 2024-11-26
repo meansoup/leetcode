@@ -8,10 +8,8 @@ class Solution {
         }
         
         for (int[] edge: edges) {
-            outs.add(edge[1]);
+            ins.remove(edge[1]);
         }
-        
-        ins.removeAll(outs);
         
         if (ins.size() == 1) {
             return ins.stream().findFirst().orElse(-1);
